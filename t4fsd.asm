@@ -2,85 +2,85 @@
     .globl main
 main:
     #Zerar tudo
-    xor	$t0,$t0,$t0	    # zera o $t0 que ir√° armazenar o endere√ßo do vetor A
-    xor	$t1,$t1,$t1    	# zera o $t1 que ir√° armazenar o endere√ßo do vetor B
-    xor	$t2,$t2,$t2	    # zera o $t2 que ir√° armazenar o endere√ßo do C
-    xor	$t3,$t3,$t3	    # zera o $t3 que ir√° armazenar o endere√ßo do D
-    xor	$t4,$t4,$t4     # zera o $t4 que ir√° armazenar variaveis 
-    xor	$t5,$t5,$t5	    # zera o $t5 que ir√° armazenar variaveis
-    xor	$t6,$t6,$t6 	# zera o $t6 que representar√° o i do for
-    xor $t7,$t7,$t7     # zera o $t7 que ir√° armazenar o resultado da opera√ß√£o
-    xor $t8,$t8,$t8
-    la $t0,a            # $t0 recebe o endere√ßo de A
-    la $t1,b            # $t1 recebe o endere√ßo de B
-    la $t2,c            # $t2 recebe o endere√ßo de c
+    xor	$t0,$t0,$t0	    # zera o $t0 que ir· armazenar o endereco do vetor A
+    xor	$t1,$t1,$t1    	    # zera o $t1 que ir· armazenar o endereco do vetor B
+    xor	$t2,$t2,$t2	    # zera o $t2 que ir· armazenar o endereco do C
+    xor	$t3,$t3,$t3	    # zera o $t3 que ir· armazenar o endereco do D
+    xor	$t4,$t4,$t4        # zera o $t4 que ir· armazenar variaveis 
+    xor	$t5,$t5,$t5	    # zera o $t5 que ir· armazenar variaveis
+    xor	$t6,$t6,$t6 	    # zera o $t6 que representar· o i do "for"
+    xor $t7,$t7,$t7        # zera o $t7 que ir· armazenar os resultados
+    xor $t8,$t8,$t8        # zera o $t8 que ir· armazenar a soma do somatÛrio
+    la $t0,a               # $t0 recebe o endereco de A
+    la $t1,b               # $t1 recebe o endereco de B
+    la $t2,c               # $t2 recebe o endereco de C
 
 soma:
-    lw $t4,0($t0)       # $t4 recebe o valor de A
-    lw $t5,0($t1)       # $t5 recebe o valor de B
+    lw $t4,0($t0)       # $t4 recebe o valor de A[i]
+    lw $t5,0($t1)       # $t5 recebe o valor de B[i]
 
-    add $t7,$t4,$t5     # a+B
-    sw $t7,0($t2)       # salva em c
+    add $t7,$t4,$t5	 # $t7 recebe $t4+$t5(A[i]+B[i])
+    sw $t7,0($t2)       # salva $t7 em C[i]
 
-    add $t6,$t6,1       #i++
-    add $t0,$t0,4       #anda
-    add $t1,$t1,4       #anda
-    add $t2,$t2,4       #anda
+    addi $t6,$t6,1       # Soma 1 ao $t6 (i++)
+    addi $t0,$t0,4       # anda para o prÛximo elemento em $t0
+    addi $t1,$t1,4       # anda para o prÛximo elemento em $t1
+    addi $t2,$t2,4       # anda para o prÛximo elemento em $t2
 
-    ble	$t6, 7, soma	# pula para a "soma"
+    ble	$t6, 7, soma	# volta para a "soma" enquanto $t6 <= 7
 
-    xor	$t0,$t0,$t0	    # zera o $t0 que ir√° armazenar o endere√ßo do vetor A
-    xor	$t1,$t1,$t1    	# zera o $t1 que ir√° armazenar o endere√ßo do vetor B
-    xor	$t2,$t2,$t2	    # zera o $t2 que ir√° armazenar o endere√ßo do C
-    xor	$t3,$t3,$t3	    # zera o $t3 que ir√° armazenar o endere√ßo do D
-    xor	$t4,$t4,$t4     # zera o $t4 que ir√° armazenar o variavel do A
-    xor	$t5,$t5,$t5	    # zera o $t5 que ir√° armazenar o variavel do B
-    xor	$t6,$t6,$t6 	# zera o $t6 que representar√° o i do for
-    xor $t7,$t7,$t7     # zera o $t7 que ir√° armazenar o resultado da opera√ß√£o
-    la $t0,a            # $t0 recebe o endere√ßo de A
-    la $t1,b            # $t1 recebe o endere√ßo de B
-    la $t3,d            # $t3 recebe o endere√ßo de d
+    xor	$t0,$t0,$t0	# zera o $t0 que ir· armazenar o endereco de A
+    xor	$t1,$t1,$t1    	# zera o $t1 que ir· armazenar o endereco de B
+    xor	$t2,$t2,$t2	# zera o $t2 que ir· armazenar o endereco do C
+    xor	$t3,$t3,$t3	# zera o $t3 que ir· armazenar o endereco do D
+    xor	$t4,$t4,$t4	# zera o $t4 que ir· armazenar o variavel do A
+    xor	$t5,$t5,$t5	# zera o $t5 que ir· armazenar o variavel do B
+    xor	$t6,$t6,$t6 	# zera o $t6 que representar· o i do "for"
+    xor $t7,$t7,$t7    # zera o $t7 que ir· armazenar o resultado da operacao
+    la $t0,a           # $t0 recebe o endereco de A
+    la $t1,b           # $t1 recebe o endereco de B
+    la $t3,d           # $t3 recebe o endereco de D
 
 subtracao: 
-    lw $t4,0($t0)       # $t4 recebe o valor de A
-    lw $t5,0($t1)       # $t5 recebe o valor de B
+    lw $t4,0($t0)       # $t4 recebe o valor de A[i]
+    lw $t5,0($t1)       # $t5 recebe o valor de B[i]
     
-    sub $t7,$t4,$t5     # a-B
-    sw $t7,0($t3)       # salva em d
+    sub $t7,$t4,$t5     # $t7 recebe $t4-$t5 (A[i]-B[i])
+    sw $t7,0($t3)       # salva $t7 em $t3(D[i])
 
-    add $t6,$t6,1       #i++
-    add $t0,$t0,4       #anda
-    add $t1,$t1,4       #anda
-    add $t3,$t3,4       #anda
+    add $t6,$t6,1       # Soma 1 ao $t6 (i++)
+    add $t0,$t0,4       # anda para o prÛximo elemento em $t0
+    add $t1,$t1,4       # anda para o prÛximo elemento em $t1
+    add $t3,$t3,4       # anda para o prÛximo elemento em $t3
 
-    ble	$t6, 7, subtracao	# pula para a "soma"
+    ble	$t6, 7, subtracao	# volta para a "subtracao" enquanto $t6 <= 7
 
-    xor	$t2,$t2,$t2	    # zera o $t2 que ir√° armazenar o endere√ßo do C
-    xor	$t3,$t3,$t3	    # zera o $t3 que ir√° armazenar o endere√ßo do D
-    xor	$t4,$t4,$t4     # zera o $t4 que ir√° armazenar a variavel do c
-    xor	$t5,$t5,$t5	    # zera o $t5 que ir√° armazenar a variavel do d
-    xor	$t6,$t6,$t6 	# zera o $t6 que representar√° o i do for
-    xor $t7,$t7,$t7     # zera o $t7 que ir√° armazenar o resultado da opera√ß√£o
-    la $t2,c            # $t2 recebe o endere√ßo de c
-    la $t3,d            # $t3 recebe o endere√ßo de d
+    xor	$t2,$t2,$t2	    # zera o $t2 que ir· armazenar o endereco do C
+    xor	$t3,$t3,$t3	    # zera o $t3 que ir· armazenar o endereco do D
+    xor	$t4,$t4,$t4	    # zera o $t4 que ir· armazenar a variavel do C
+    xor	$t5,$t5,$t5	    # zera o $t5 que ir· armazenar a variavel do D
+    xor	$t6,$t6,$t6 	    # zera o $t6 que representar· o i do "for"
+    xor $t7,$t7,$t7        # zera o $t7 que ir· armazenar o resultado da operacao
+    la $t2,c               # $t2 recebe o endereco de C
+    la $t3,d               # $t3 recebe o endereco de D
     
 Somatorio:
-    lw $t4,0($t2)       # $t4 recebe o valor de c
-    lw $t5,0($t3)       # $t5 recebe o valor de d
+    lw $t4,0($t2)       # $t4 recebe o valor de C[i]
+    lw $t5,0($t3)       # $t5 recebe o valor de D[i]
 
-    add $t7, $t7, $t4   # soma somat√≥rio + c 
-    add $t7, $t7, $t5   # soma somat√≥rio + d
-    add $t8,$t7,0       # salva em soma
+    add $t7, $t7, $t4   # $t7 recebe $t7+$t4 ($t7+=C[i])
+    add $t7, $t7, $t5   # $t7 recebe $t7+$t5 ($t7+=D[i])
+    add $t8,$t7,0       # $t8 recebe $t7+0 (soma = $t7)
 
-    add $t6,$t6,1       #i++
-    add $t2,$t2,4       #anda
-    add $t3,$t3,4       #anda
+    add $t6,$t6,1       # Soma 1 ao $t6 (i++)
+    add $t2,$t2,4       # anda para o prÛximo elemento em $t2
+    add $t3,$t3,4       # anda para o prÛximo elemento em $t3
 
-    ble	$t6, 7, Somatorio	# pula para a "soma"
+    ble	$t6, 7, Somatorio	# volta para a "Somatorio" enquanto $t6 <= 7
 
-    xor	$t2,$t2,$t2	    # zera o $t2 que ir√° armazenar o endere√ßo do C
+    xor	$t2,$t2,$t2	 # zera o $t2 que ir√° armazenar o endere√ßo do C
     xor	$t4,$t4,$t4     # zera o $t4 que ir√° armazenar o variavel do c
-    xor	$t6,$t6,$t6 	# zera o $t6 que representar√° o i do for
+    xor	$t6,$t6,$t6 	 # zera o $t6 que representar√° o i do for
     xor $t7,$t7,$t7     # zera o $t7 que ir√° armazenar o maior
     la $t2,c            # $t2 recebe o endere√ßo de c
 
