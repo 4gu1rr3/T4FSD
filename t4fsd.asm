@@ -138,5 +138,5 @@ Resultado:
     sm: 0                          #Variavel SM
     a: .word 1 -2 3 -4 5 6 -7 8    #Vetor A
     b: .word 9 1 2 -3 4 -5 10 11   #Vetor B
-    c: .word 0 0 0 0 0 0 0 0 0     #Vetor C
-    d: .word 0 0 0 0 0 0 0 0 0     #Vetor D
+    c: .word 0 0 0 0 0 0 0 0      #Vetor C
+    d: .word 0 0 0 0 0 0 0 0     #Vetor D
