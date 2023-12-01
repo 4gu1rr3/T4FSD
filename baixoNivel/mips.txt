@@ -1,0 +1,127 @@
+0x00400000  0x01084026  xor $8,$8,$8          5        xor	$t0,$t0,$t0	    # zera o $t0 que ir  armazenar o endereco do vetor A
+0x00400004  0x01294826  xor $9,$9,$9          6        xor	$t1,$t1,$t1    	# zera o $t1 que ir  armazenar o endereco do vetor B
+0x00400008  0x014a5026  xor $10,$10,$10       7        xor	$t2,$t2,$t2	    # zera o $t2 que ir  armazenar o endereco do C
+0x0040000c  0x016b5826  xor $11,$11,$11       8        xor	$t3,$t3,$t3	    # zera o $t3 que ir  armazenar o endereco do D
+0x00400010  0x018c6026  xor $12,$12,$12       9        xor	$t4,$t4,$t4     # zera o $t4 que ir  armazenar variaveis 
+0x00400014  0x01ad6826  xor $13,$13,$13       10       xor	$t5,$t5,$t5	    # zera o $t5 que ir  armazenar variaveis
+0x00400018  0x01ce7026  xor $14,$14,$14       11       xor	$t6,$t6,$t6 	# zera o $t6 que representar  o i do "for"
+0x0040001c  0x01ef7826  xor $15,$15,$15       12       xor $t7,$t7,$t7     # zera o $t7 que ir  armazenar os resultados
+0x00400020  0x0318c026  xor $24,$24,$24       13       xor $t8,$t8,$t8     # zera o $t8 que ir  armazenar a soma do somat rio
+0x00400024  0x3c011001  lui $1,0x00001001     14       la $t0,a            # $t0 recebe o endereco de A
+0x00400028  0x34280004  ori $8,$1,0x00000004       
+0x0040002c  0x3c011001  lui $1,0x00001001     15       la $t1,b            # $t1 recebe o endereco de B
+0x00400030  0x34290024  ori $9,$1,0x00000024       
+0x00400034  0x3c011001  lui $1,0x00001001     16       la $t2,c            # $t2 recebe o endereco de C
+0x00400038  0x342a0044  ori $10,$1,0x00000044      
+0x0040003c  0x8d0c0000  lw $12,0x00000000($8) 19       lw $t4,0($t0)       # $t4 recebe o valor de A[i]
+0x00400040  0x8d2d0000  lw $13,0x00000000($9) 20       lw $t5,0($t1)       # $t5 recebe o valor de B[i]
+0x00400044  0x018d7820  add $15,$12,$13       22       add $t7,$t4,$t5	    # $t7 recebe $t4+$t5(A[i]+B[i])
+0x00400048  0xad4f0000  sw $15,0x00000000($10)23       sw $t7,0($t2)       # salva $t7 em C[i]
+0x0040004c  0x21ce0001  addi $14,$14,0x000000025       addi $t6,$t6,1      # Soma 1 ao $t6 (i++)
+0x00400050  0x21080004  addi $8,$8,0x00000004 26       addi $t0,$t0,4      # anda para o pr ximo elemento em $t0
+0x00400054  0x21290004  addi $9,$9,0x00000004 27       addi $t1,$t1,4      # anda para o pr ximo elemento em $t1
+0x00400058  0x214a0004  addi $10,$10,0x000000028       addi $t2,$t2,4      # anda para o pr ximo elemento em $t2
+0x0040005c  0x21c1ffff  addi $1,$14,0xffffffff30       ble	$t6, 7, soma	# volta para a "soma" enquanto $t6 <= 7
+0x00400060  0x28210007  slti $1,$1,0x00000007      
+0x00400064  0x1420fff5  bne $1,$0,0xfffffff5       
+0x00400068  0x01084026  xor $8,$8,$8          32       xor	$t0,$t0,$t0	    # zera o $t0 que ir  armazenar o endereco de A
+0x0040006c  0x01294826  xor $9,$9,$9          33       xor	$t1,$t1,$t1    	# zera o $t1 que ir  armazenar o endereco de B
+0x00400070  0x014a5026  xor $10,$10,$10       34       xor	$t2,$t2,$t2	    # zera o $t2 que ir  armazenar o endereco do C
+0x00400074  0x016b5826  xor $11,$11,$11       35       xor	$t3,$t3,$t3	    # zera o $t3 que ir  armazenar o endereco do D
+0x00400078  0x018c6026  xor $12,$12,$12       36       xor	$t4,$t4,$t4	    # zera o $t4 que ir  armazenar o variavel do A
+0x0040007c  0x01ad6826  xor $13,$13,$13       37       xor	$t5,$t5,$t5	    # zera o $t5 que ir  armazenar o variavel do B
+0x00400080  0x01ce7026  xor $14,$14,$14       38       xor	$t6,$t6,$t6 	# zera o $t6 que representar  o i do "for"
+0x00400084  0x01ef7826  xor $15,$15,$15       39       xor $t7,$t7,$t7     # zera o $t7 que ir  armazenar o resultado da operacao
+0x00400088  0x3c011001  lui $1,0x00001001     40       la $t0,a            # $t0 recebe o endereco de A
+0x0040008c  0x34280004  ori $8,$1,0x00000004       
+0x00400090  0x3c011001  lui $1,0x00001001     41       la $t1,b            # $t1 recebe o endereco de B
+0x00400094  0x34290024  ori $9,$1,0x00000024       
+0x00400098  0x3c011001  lui $1,0x00001001     42       la $t3,d            # $t3 recebe o endereco de D
+0x0040009c  0x342b0068  ori $11,$1,0x00000068      
+0x004000a0  0x8d0c0000  lw $12,0x00000000($8) 45       lw $t4,0($t0)       # $t4 recebe o valor de A[i]
+0x004000a4  0x8d2d0000  lw $13,0x00000000($9) 46       lw $t5,0($t1)       # $t5 recebe o valor de B[i]
+0x004000a8  0x018d7822  sub $15,$12,$13       48       sub $t7,$t4,$t5     # $t7 recebe $t4-$t5 (A[i]-B[i])
+0x004000ac  0xad6f0000  sw $15,0x00000000($11)49       sw $t7,0($t3)       # salva $t7 em $t3(D[i])
+0x004000b0  0x21ce0001  addi $14,$14,0x000000051       add $t6,$t6,1       # Soma 1 ao $t6 (i++)
+0x004000b4  0x21080004  addi $8,$8,0x00000004 52       add $t0,$t0,4       # anda para o pr ximo elemento em $t0
+0x004000b8  0x21290004  addi $9,$9,0x00000004 53       add $t1,$t1,4       # anda para o pr ximo elemento em $t1
+0x004000bc  0x216b0004  addi $11,$11,0x000000054       add $t3,$t3,4       # anda para o pr ximo elemento em $t3
+0x004000c0  0x21c1ffff  addi $1,$14,0xffffffff56       ble	$t6, 7, subtracao	# volta para a "subtracao" enquanto $t6 <= 7
+0x004000c4  0x28210007  slti $1,$1,0x00000007      
+0x004000c8  0x1420fff5  bne $1,$0,0xfffffff5       
+0x004000cc  0x014a5026  xor $10,$10,$10       58       xor	$t2,$t2,$t2	    # zera o $t2 que ir  armazenar o endereco do C
+0x004000d0  0x016b5826  xor $11,$11,$11       59       xor	$t3,$t3,$t3	    # zera o $t3 que ir  armazenar o endereco do D
+0x004000d4  0x018c6026  xor $12,$12,$12       60       xor	$t4,$t4,$t4	    # zera o $t4 que ir  armazenar a variavel do C
+0x004000d8  0x01ad6826  xor $13,$13,$13       61       xor	$t5,$t5,$t5	    # zera o $t5 que ir  armazenar a variavel do D
+0x004000dc  0x01ce7026  xor $14,$14,$14       62       xor	$t6,$t6,$t6 	# zera o $t6 que representar  o i do "for"
+0x004000e0  0x01ef7826  xor $15,$15,$15       63       xor $t7,$t7,$t7     # zera o $t7 que ir  armazenar o resultado da operacao
+0x004000e4  0x3c011001  lui $1,0x00001001     64       la $t2,c            # $t2 recebe o endereco de C
+0x004000e8  0x342a0044  ori $10,$1,0x00000044      
+0x004000ec  0x3c011001  lui $1,0x00001001     65       la $t3,d            # $t3 recebe o endereco de D
+0x004000f0  0x342b0068  ori $11,$1,0x00000068      
+0x004000f4  0x8d4c0000  lw $12,0x00000000($10)68       lw $t4,0($t2)       # $t4 recebe o valor de C[i]
+0x004000f8  0x8d6d0000  lw $13,0x00000000($11)69       lw $t5,0($t3)       # $t5 recebe o valor de D[i]
+0x004000fc  0x01ec7820  add $15,$15,$12       71       add $t7, $t7, $t4   # $t7 recebe $t7+$t4 ($t7+=C[i])
+0x00400100  0x01ed7820  add $15,$15,$13       72       add $t7, $t7, $t5   # $t7 recebe $t7+$t5 ($t7+=D[i])
+0x00400104  0x21f80000  addi $24,$15,0x000000073       add $t8,$t7,0       # $t8 recebe $t7+0 (soma = $t7)
+0x00400108  0x21ce0001  addi $14,$14,0x000000075       add $t6,$t6,1       # Soma 1 ao $t6 (i++)
+0x0040010c  0x214a0004  addi $10,$10,0x000000076       add $t2,$t2,4       # anda para o pr ximo elemento em $t2
+0x00400110  0x216b0004  addi $11,$11,0x000000077       add $t3,$t3,4       # anda para o pr ximo elemento em $t3
+0x00400114  0x21c1ffff  addi $1,$14,0xffffffff79       ble	$t6, 7, Somatorio	# volta para a "Somatorio" enquanto $t6 <= 7
+0x00400118  0x28210007  slti $1,$1,0x00000007      
+0x0040011c  0x1420fff5  bne $1,$0,0xfffffff5       
+0x00400120  0x014a5026  xor $10,$10,$10       81       xor	$t2,$t2,$t2	    # zera o $t2 que irá armazenar o endereço do C
+0x00400124  0x018c6026  xor $12,$12,$12       82       xor	$t4,$t4,$t4     # zera o $t4 que irá armazenar o variavel do C
+0x00400128  0x01ce7026  xor $14,$14,$14       83       xor	$t6,$t6,$t6 	# zera o $t6 que representará o i do "for"
+0x0040012c  0x01ef7826  xor $15,$15,$15       84       xor $t7,$t7,$t7     # zera o $t7 que irá armazenar o maior
+0x00400130  0x3c011001  lui $1,0x00001001     85       la $t2,c            # $t2 recebe o endereço de C
+0x00400134  0x342a0044  ori $10,$1,0x00000044      
+0x00400138  0x8d4c0000  lw $12,0x00000000($10)88       lw $t4,0($t2)        # $t4 recebe o valor de C[i]
+0x0040013c  0x01ec082a  slt $1,$15,$12        89       ble	$t4, $t7, AndaC  # vai para a "AndaC" enquanto $t4 <= $t7 (C[i] <= maior)
+0x00400140  0x10200001  beq $1,$0,0x00000001       
+0x00400144  0x218f0000  addi $15,$12,0x000000090       add $t7,$t4,0        # atualiza $t7 (maior = $t4)
+0x00400148  0x214a0004  addi $10,$10,0x000000093       add $t2,$t2,4        # anda para o pr ximo elemento em $t2
+0x0040014c  0x21ce0001  addi $14,$14,0x000000094       add $t6,$t6,1        # Soma 1 ao $t6 (i++)
+0x00400150  0x21c1ffff  addi $1,$14,0xffffffff95       ble	$t6, 7, MaiorC	 # volta para a "MaiorC" enquanto $t6 <= 7
+0x00400154  0x28210007  slti $1,$1,0x00000007      
+0x00400158  0x1420fff7  bne $1,$0,0xfffffff7       
+0x0040015c  0x016b5826  xor $11,$11,$11       97       xor	$t3,$t3,$t3	     # zera o $t3 que irá armazenar o endereço do D
+0x00400160  0x01ad6826  xor $13,$13,$13       98       xor	$t5,$t5,$t5	     # zera o $t5 que irá armazenar o variavel do D
+0x00400164  0x01ce7026  xor $14,$14,$14       99       xor	$t6,$t6,$t6 	 # zera o $t6 que representará o i do "for"
+0x00400168  0x3c011001  lui $1,0x00001001     100      la $t3,d             # $t3 recebe o endereço de D
+0x0040016c  0x342b0068  ori $11,$1,0x00000068      
+0x00400170  0x8d6d0000  lw $13,0x00000000($11)103      lw $t5,0($t3)        # $t5 recebe o valor de D[i]
+0x00400174  0x01ed082a  slt $1,$15,$13        105      ble	$t5, $t7, AndaD	 # vai para a "AndaD" enquanto $t5 <= $t7 (D[i] <= maior)
+0x00400178  0x10200001  beq $1,$0,0x00000001       
+0x0040017c  0x21af0000  addi $15,$13,0x0000000107      add $t7,$t5,0        # atualiza $t7 (maior = $t5)
+0x00400180  0x216b0004  addi $11,$11,0x0000000110      add $t3,$t3,4        # anda para o pr ximo elemento em $t3
+0x00400184  0x21ce0001  addi $14,$14,0x0000000111      add $t6,$t6,1        # Soma 1 ao $t6 (i++)
+0x00400188  0x21c1ffff  addi $1,$14,0xffffffff112      ble	$t6, 7, MaiorD	 # volta para a "MaiorD" enquanto $t6 <= 7
+0x0040018c  0x28210007  slti $1,$1,0x00000007      
+0x00400190  0x1420fff7  bne $1,$0,0xfffffff7       
+0x00400194  0x01084026  xor $8,$8,$8          114      xor	$t0,$t0,$t0	     # zera o $t0 que irá armazenar a acumulação de somas
+0x00400198  0x01294826  xor $9,$9,$9          115      xor	$t1,$t1,$t1	     # zera o $t1 que receberá o endereço de SM
+0x0040019c  0x018c6026  xor $12,$12,$12       116      xor	$t4,$t4,$t4	     # zera o $t4 que receberá a quantidade de vezes que será somado
+0x004001a0  0x3c011001  lui $1,0x00001001     117      la $t1,sm            # $t1 recebe o endereço de SM
+0x004001a4  0x34290000  ori $9,$1,0x00000000       
+0x004001a8  0x21ec0000  addi $12,$15,0x0000000120      add $t4,$t7,0        # $t4 recebe $t7+0 (fator = maior)
+0x004001ac  0x000c082a  slt $1,$0,$12         123      blt $zero,$t4,Multiplicacao   # Quando $t4 for maior que 0 vai para Multiplicacao
+0x004001b0  0x14200001  bne $1,$0,0x00000001       
+0x004001b4  0x000c6022  sub $12,$0,$12        124      sub $t4,$zero,$t4             # $t4 recebe 0-$t4 (troca o sinal de $t4)
+0x004001b8  0x01184020  add $8,$8,$24         127      add $t0,$t0,$t8               # $t0 recebe $t0+$t8 (acumulador += soma) 
+0x004001bc  0x20010001  addi $1,$0,0x00000001 128      sub $t4,$t4,1                 # $t4 recebe $t4-1 (i--)
+0x004001c0  0x01816022  sub $12,$12,$1             
+0x004001c4  0x000c082a  slt $1,$0,$12         129      blt $zero,$t4,Multiplicacao   # Quando $t4 for maior que 0 vai para Multiplicacao
+0x004001c8  0x1420fffb  bne $1,$0,0xfffffffb       
+0x004001cc  0x000f082a  slt $1,$0,$15         130      blt $zero,$t7,Resultado       # Quando $t7 for maior que 0 vai para Resultado
+0x004001d0  0x14200001  bne $1,$0,0x00000001       
+0x004001d4  0x000c6022  sub $12,$0,$12        131      sub $t4,$zero,$t4             # $t4 recebe 0-$t4 (muda o sinal da multiplicacao caso $t7 for negativo)
+0x004001d8  0xad280000  sw $8,0x00000000($9)  134      sw $t0,0($t1)         # $t1 recebe o endereco do valor em $t0
+0x004001dc  0x8d290000  lw $9,0x00000000($9)  135      lw $t1,0($t1)         # $t1 recebe o valor no endereco em $t1 (SM = soma * maior)
+
+0x10010000    0x00000000 0x00000001 0xfffffffe 0x00000003 0xfffffffc 0x00000005 0x00000006 0xfffffff9 
+0x10010020    0x00000008 0x00000009 0x00000001 0x00000002 0xfffffffd 0x00000004 0xfffffffb 0x0000000a 
+0x10010040    0x0000000b 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+0x10010060    0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+0x10010080    0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 
+0x100100a0    0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000 

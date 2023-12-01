@@ -135,8 +135,8 @@ Resultado:
     lw $t1,0($t1)         # $t1 recebe o valor no endereco em $t1 (SM = soma * maior)
     
 .data
+    sm: 0                          #Variavel SM
     a: .word 1 -2 3 -4 5 6 -7 8    #Vetor A
     b: .word 9 1 2 -3 4 -5 10 11   #Vetor B
     c: .word 0 0 0 0 0 0 0 0 0     #Vetor C
     d: .word 0 0 0 0 0 0 0 0 0     #Vetor D
-    sm: 0                          #Variavel SM
